@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block title %} Oh ohh.. {% endblock %} 
+{% block body %}
+
+<div class="error-page-container">
+  <div class="error-page-content">
+    <!-- Animated 404 -->
+    <div class="error-page-number">
+      <span class="error-page-digit">4</span>
+      <div class="error-page-planet">
+        <div class="error-page-crater"></div>
+        <div class="error-page-crater"></div>
+        <div class="error-page-crater"></div>
+      </div>
+      <span class="error-page-digit">4</span>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-page-message">
+      <h1 class="error-page-title">Oops! Page Not Found</h1>
+      <p class="error-page-text">
+        The page you're looking for seems to have drifted off into space.
+      </p>
+      <p class="error-page-url">
+        You tried to access: <strong>{{ request.path }}</strong>
+      </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="error-page-actions">
+      <a
+        href="{% url 'app1:home' %}"
+        class="error-page-btn error-page-btn-primary"
+      >
+        🚀 Back to Home
+      </a>
+      <a
+        href="javascript:history.back()"
+        class="error-page-btn error-page-btn-secondary"
+      >
+        ↩️ Go Back
+      </a>
+    </div>
+
+    <!-- Floating Astronaut -->
+    <div class="error-page-astronaut">
+      <div class="error-page-helmet"></div>
+      <div class="error-page-body"></div>
+    </div>
+  </div>
+
+  <!-- Stars Background -->
+  <div class="error-page-stars">
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+    <div class="error-page-star"></div>
+  </div>
+</div>
+{% endblock %}

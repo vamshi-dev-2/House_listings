@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block title %} Home page {% endblock %} 
+{% block body %}
+<h2 class="title">Available Houses</h2>
+
+<div class="card-container">
+  {% for house in data %}
+  <a href="{% url 'app1:house_detail' house.id %}" class="card-link">
+    <div class="house-card">
+      {% if house.image %}
+      <img src="{{ house.image.url }}" class="house-img" />
+      {% else %}
+      <img src="../media/default.jpg" class="house-img" />
+      {% endif %}
+
+      <div class="house-info">
+        <h3>{{ house.name }}</h3>
+        <p><b>Owner:</b> {{ house.owner_mail }}</p>
+        <p><b>Bedrooms:</b> {{ house.no_of_bedrooms }}</p>
+        <p><b>Price:</b> ₹{{ house.price }}</p>
+
+        {% if house.ready_to_sale %}
+        <span class="sale sale-yes">Ready to Sale ✅</span>
+        {% else %}
+        <span class="sale sale-no">Not for Sale ❌</span>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock %}

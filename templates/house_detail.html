@@ -1,0 +1,80 @@
+{% extends 'base.html' %} {% block title %}House Details - {{ house.name }}
+{%endblock %} {% block body %}
+<div class="house-card-detail">
+  <!-- Top Image Section -->
+  <div class="house-image-container">
+    {% if house.image %}
+    <img
+      src="{{ house.image.url }}"
+      alt="{{ house.name }}"
+      class="house-main-image"
+    />
+    {% else %}
+    <img src="../media/default.jpg" alt="No image" class="house-main-image" />
+
+    {% endif %}
+  </div>
+
+  <!-- Content Section -->
+  <div class="house-content">
+    <!-- Header with Title and Status -->
+    <div class="house-header">
+      <h1 class="house-title">{{ house.name }}</h1>
+
+      <div class="status-badge status-badge--edit">
+        <a href="{% url 'app1:edit_house' house.id %}"> Edit </a>
+      </div>
+
+      <div
+        class="status-badge {% if house.ready_to_sale %}status-badge--available{% else %}status-badge--unavailable{% endif %}"
+      >
+        {% if house.ready_to_sale %} 🏠 Ready to Sale {% else %} ⏳ Not
+        Available {% endif %}
+      </div>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="house-details-grid">
+      <div class="detail-item">
+        <span class="detail-label">Property Owner</span>
+        <span class="detail-value">📧 {{ house.owner_mail }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="detail-label">Asking Price</span>
+        <span class="detail-value detail-value--price"
+          >💰 ${{ house.price }}</span
+        >
+      </div>
+
+      <div class="detail-item">
+        <span class="detail-label">Bedrooms</span>
+        <span class="detail-value">🛏️ {{ house.no_of_bedrooms }} Rooms</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="detail-label">Status</span>
+        <span class="detail-value detail-value--highlight">
+          {% if house.ready_to_sell %} ✅ Available Now {% else %} ❌ Not for
+          Sale {% endif %}
+        </span>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="house-description">
+      <h3 class="description-title">Property Overview</h3>
+      <p>{{ house.description }}</p>
+    </div>
+
+    <!-- Location -->
+    <div class="location-section">
+      <h3 class="location-title">📍 Location Details</h3>
+      <a href="{{ house.location }}" class="location-link" target="_blank">
+        View on Map
+        <span style="font-size: 1.1rem">🗺️</span>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

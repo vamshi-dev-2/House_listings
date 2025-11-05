@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block title %} Delete a House {% endblock %}
+{%block body%}
+<div style="margin: auto; width: 80%; height: 50vh; margin-top: 20px">
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="house_name" placeholder="Enter Name of House" />
+    <button type="submit">Delete</button>
+  </form>
+</div>
+{% endblock %}
