@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def display_all(request):
+    
     data=House.objects.all()
     print(data)
     return render(request,'home.html',{'data':data})
